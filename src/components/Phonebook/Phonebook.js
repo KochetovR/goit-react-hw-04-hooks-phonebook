@@ -19,6 +19,11 @@ export default function Phonebook() {
   }, [contacts]);
 
   const formSubmitHandler = data => {
+    const nameContact = contacts.map(el => el.name.toLowerCase());
+    if (nameContact.includes(data.name.toLowerCase())) {
+      return alert(`${data.name} is already in contacts`);
+    }
+
     const contact = {
       name: data.name,
       number: data.number,
